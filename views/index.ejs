@@ -2,10 +2,31 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <%- include('imports'); -%>
+
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('navbar'); -%>
+    
+    <div class="container">
+      <div class="row">
+          <% posts.forEach((post) => { %>
+            <div class="card" style="width: 18rem;">
+                <img src="<%= `/images/${post.image}` %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= post.title %>
+                  </h5>
+                  <p class="card-text"> 
+                      <%= post.description %>
+                  </p>
+                  <a href="#" class="btn btn-primary">Ler mais</a>
+                </div>
+              </div>
+          <%  }); %>
+      </div>
+    </div>
+
   </body>
 </html>
